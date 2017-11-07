@@ -1,7 +1,8 @@
 //Instanting the connection to the db and supplying sequalize instance
+const Sequelize = require('Sequelize');
 const sequelize = new Sequelize('beAGoodNeighborDB', 'root', '', {
   host: 'localhost',
-  dialect: 'mysql'|'sqlite'|'postgres'|'mssql',
+  dialect: 'mysql',
 
   pool: {
     max: 5,
@@ -23,5 +24,6 @@ sequelize
 .catch(err => {
   console.error('Unable to connect to the database:', err);
 });
+
 
 module.exports.sequalize;
