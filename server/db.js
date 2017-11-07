@@ -24,6 +24,8 @@ sequelize
 .catch(err => {
   console.error('Unable to connect to the database:', err);
 });
+
+// Create the table communities instaniating a sequelize model
 const Communities = sequelize.define('communities',  {
   the_geom: Sequelize.STRING,
   development: Sequelize.STRING,
@@ -36,6 +38,7 @@ const Communities = sequelize.define('communities',  {
   telephone: Sequelize.STRING
 });
 
+//Sequelize creates table using sync - force option drops table if it exists
 Communities.sync({force: true})
 .then((message) => console.log('SUCCESS: ', message))
 .catch((err) => console.log('ERROR', err))
