@@ -1,7 +1,8 @@
 //Instanting the connection to the db and supplying sequalize instance
+const Sequelize = require('Sequelize');
 const sequelize = new Sequelize('beAGoodNeighborDB', 'root', '', {
   host: 'localhost',
-  dialect: 'mysql'|'sqlite'|'postgres'|'mssql',
+  dialect: 'mysql',
 
   pool: {
     max: 5,
@@ -24,4 +25,22 @@ sequelize
   console.error('Unable to connect to the database:', err);
 });
 
-module.exports.sequalize;
+// Create the table communities instaniating a sequelize model
+const Communities = sequelize.define('communities',  {
+  the_geom: Sequelize.STRING,
+  development: Sequelize.STRING,
+  tds_num: Sequelize.INTEGER,
+  borough: Sequelize.STRING,
+  facility: Sequelize.STRING,
+  sponors: Sequelize.STRING,
+  program: Sequelize.STRING,
+  address: Sequelize.STRING,
+  telephone: Sequelize.STRING
+});
+
+//Sequelize creates table using sync - force option drops table if it exists
+Communities.sync({force: true})
+.then((message) => console.log('SUCCESS: ', message))
+.catch((err) => console.log('ERROR', err))
+
+module.exports.Communities;
