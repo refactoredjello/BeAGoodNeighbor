@@ -24,6 +24,20 @@ sequelize
 .catch(err => {
   console.error('Unable to connect to the database:', err);
 });
+const Communities = sequelize.define('communities',  {
+  the_geom: Sequelize.STRING,
+  development: Sequelize.STRING,
+  tds_num: Sequelize.INTEGER,
+  borough: Sequelize.STRING,
+  facility: Sequelize.STRING,
+  sponors: Sequelize.STRING,
+  program: Sequelize.STRING,
+  address: Sequelize.STRING,
+  telephone: Sequelize.STRING
+});
 
+Communities.sync({force: true})
+.then((message) => console.log('SUCCESS: ', message))
+.catch((err) => console.log('ERROR', err))
 
-module.exports.sequalize;
+module.exports.Communities;
