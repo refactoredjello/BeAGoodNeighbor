@@ -32,7 +32,7 @@ const Communities = sequelize.define('communities',  {
   tds_num: Sequelize.INTEGER,
   borough: Sequelize.STRING,
   facility: Sequelize.STRING,
-  sponors: Sequelize.STRING,
+  sponsor: Sequelize.STRING,
   program: Sequelize.STRING,
   address: Sequelize.STRING,
   telephone: Sequelize.STRING
