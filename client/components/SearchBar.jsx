@@ -26,14 +26,20 @@ export default class SearchBar extends React.Component {
   render() {
     return (
       <div className="search-bar-input">
-        <input 
-          type="text"
-          placeholder="Search for your borough here!"
-          onChange={this.handleChange.bind(this)}
-        />
-        <button onClick={this.handleNewInput.bind(this)}>
-          Search
-        </button>
+        <form onSubmit={this.handleNewInput.bind(this)}>
+          <label>
+          Pick your borough:
+          <select value={this.state.searchVal} onChange={this.handleChange.bind(this)}>
+            <option value="Manhattan">Manhattan</option>
+            <option value="Brooklyn">Brooklyn</option>
+            <option value="Queens">Queens</option>
+            <option value="Bronx">Bronx</option>
+            <option value="Staten Island">Staten Island</option>
+            <option value="All">All</option>
+          </select>
+          </label>
+          <input type="submit" value="Submit" />
+        </form>
       </div>
     )
   }

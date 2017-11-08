@@ -2,28 +2,37 @@ import React from 'react'
 import ReactDOM from 'react-dom'
 import SearchBar from './SearchBar.jsx'
 import Results from './Results.jsx'
+import SearchResult from './SearchResult.jsx'
+import CommunityMap from './CommunityMap.jsx'
+import axios from 'axios'
 
 // main component with SearchBar and Results
 export default class App extends React.Component {
-	constructor(props) {
-		super(props);
-		this.state = {
-			searchVal: ''
-		}
-	}
+  constructor(props) {
+    super(props);
+    this.state = {
+      searchVal: '',
+      results: []
+    }
+  }
   
   // changes state of the searchVal
-	handleSearchInput(search) {
-		this.setState({
-			searchVal: search
-		}, function(err, searchVal) {
-			if (err) console.error(err)
-			console.log(this.state.searchVal)
-		})
-	}
+  // NOTE: we need a special request for ALL since there will be No Filter
+  handleSearchInput(search) {
+    // console.log(this.state.searchVal)
+    this.setState({ searchVal: search }, function() {
+      // change path to wherever data is
+      axios.get(`/searchInput?borough=${search}`) 
+      .then(function(response) {
+        this.setState({results: response});
+      })
+    })  
+  }
 
-	render() {
-		return (
+  // setting up SearchBar, CommunityMap, and Results components
+  // passing down the states from App.jsx to other components
+  render() {
+    return (
       <div>
         <div className="logo">
           <label>
@@ -35,11 +44,15 @@ export default class App extends React.Component {
           handleSearch={this.handleSearchInput.bind(this)} />
         </div>
         <div className="loaded-results">
-          <Results />
+          <CommunityMap results={this.state.results} 
+            containerElement={<div style={{ height: `400px` }}/>}
+            mapElement={<div style={{ height: `100%`}}/>}
+            />
+          <Results results={this.state.results} />
         </div>
       </div>
-		)
-	}
+    )
+  }
 }
 
 ReactDOM.render(<App />, document.getElementById('app'));
