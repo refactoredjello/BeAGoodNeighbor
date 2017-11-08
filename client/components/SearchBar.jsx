@@ -13,7 +13,8 @@ export default class SearchBar extends React.Component {
   // changes to the inputted value
   handleNewInput(event) {
     event.preventDefault();
-    this.props.handleSearchInput(this.state.searchVal);
+    this.props.handleSearch(this.state.searchVal);
+    console.log(this.state.searchVal)
   }
   
   // this allows you the change the state upon typing
