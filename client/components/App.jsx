@@ -11,6 +11,10 @@ export default class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
+      mapCenter: {
+        lat: 40.74796877343687,
+        lng: -73.95113423486512
+      },
       searchVal: '',
       results: []
     }
@@ -22,12 +26,17 @@ export default class App extends React.Component {
     // console.log(this.state.searchVal)
     this.setState({ searchVal: search }, function() {
       // change path to wherever data is
-      axios.get(`/searchInput?borough=${search}`) 
-      .then(function(response) {
-        this.setState({results: response});
+      console.log(this.state.searchVal)
+      axios.get(`/search?borough=${search}`) 
+      .then((response) => {
+        console.log(response.data)
+        this.setState({ results: response.data}, function() {
+          // console.log(this.state.results)
+          // console.log(this.state.mapCenter)
+        });
       })
-    })  
-  }
+    })
+  } 
 
   // setting up SearchBar, CommunityMap, and Results components
   // passing down the states from App.jsx to other components
@@ -45,6 +54,7 @@ export default class App extends React.Component {
         </div>
         <div className="loaded-results">
           <CommunityMap results={this.state.results} 
+            mapCenter={this.state.mapCenter}
             containerElement={<div style={{ height: `400px` }}/>}
             mapElement={<div style={{ height: `100%`}}/>}
             />
