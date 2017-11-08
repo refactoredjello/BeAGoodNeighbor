@@ -38,9 +38,21 @@ const Communities = sequelize.define('communities',  {
   telephone: Sequelize.STRING
 })
 
+//Create a users table
+const Users = sequelize.define('users',  {
+  username: Sequelize.STRING,
+  password: Sequelize.STRING 
+})
+
 //Sequelize creates table using sync - if force option is true, sync drops table if it exists
-Communities.sync({force: false})
-.then((message) => console.log('SUCCESS: ', message))
+Users.sync({force: false})
+.then((message) => console.log('SUCCESS CREATING USER TABLE '))
 .catch((err) => console.log('ERROR: ', err))
 
+//Sequelize creates table using sync - if force option is true, sync drops table if it exists
+Communities.sync({force: false})
+.then((message) => console.log('SUCCESS CREATING COMMUNITIES TABLE '))
+.catch((err) => console.log('ERROR: ', err))
+
+module.exports.Users = Users
 module.exports.Communities = Communities
