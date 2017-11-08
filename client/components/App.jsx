@@ -29,6 +29,8 @@ export default class App extends React.Component {
     })  
   }
 
+  // setting up SearchBar, CommunityMap, and Results components
+  // passing down the states from App.jsx to other components
   render() {
     return (
       <div>
@@ -42,7 +44,10 @@ export default class App extends React.Component {
           handleSearch={this.handleSearchInput.bind(this)} />
         </div>
         <div className="loaded-results">
-          <CommunityMap results={this.state.results} />
+          <CommunityMap results={this.state.results} 
+            containerElement={<div style={{ height: `400px` }}/>}
+            mapElement={<div style={{ height: `100%`}}/>}
+            />
           <Results results={this.state.results} />
         </div>
       </div>
