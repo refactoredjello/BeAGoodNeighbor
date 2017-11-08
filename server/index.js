@@ -7,7 +7,7 @@ var searchDB = require('./searchDb.js')
 var app = express()
 
 app.use(bodyParser.json());
-app.use(express.static(path.resolve(__dirname, './client')))
+app.use(express.static(path.resolve(__dirname, '../client')))
 
 //On search endpoint, query the database and send the result. 
 app.get('/search', (req, res) => {
