@@ -11,7 +11,6 @@ app.use(express.static(path.resolve(__dirname, '../client')))
 
 //On search endpoint, query the database and send the result. 
 app.get('/search', (req, res) => {
-  console.log()
   searchDB(req.query.borough)
   .then(result => res.send(result))
   .catch((err) => console.log('Error: ', err))
