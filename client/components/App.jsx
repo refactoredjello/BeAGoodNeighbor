@@ -31,7 +31,7 @@ export default class App extends React.Component {
       .then((response) => {
         console.log(response.data)
         this.setState({ results: response.data}, function() {
-          console.log(this.state.results)
+          // console.log(this.state.results)
           // console.log(this.state.mapCenter)
         });
       })
