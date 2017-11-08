@@ -1,5 +1,5 @@
 //Instanting the connection to the db and supplying sequalize instance
-const Sequelize = require('Sequelize');
+const Sequelize = require('Sequelize')
 const sequelize = new Sequelize('beAGoodNeighborDB', 'root', '', {
   host: 'localhost',
   dialect: 'mysql',
@@ -13,17 +13,17 @@ const sequelize = new Sequelize('beAGoodNeighborDB', 'root', '', {
 
   // http://docs.sequelizejs.com/manual/tutorial/querying.html#operators
   operatorsAliases: false
-});
+})
 
 // Testing Connection to db
 sequelize
 .authenticate()
 .then(() => {
-  console.log('Connection has been established successfully.');
+  console.log('Connection has been established successfully.')
 })
 .catch(err => {
-  console.error('Unable to connect to the database:', err);
-});
+  console.error('Unable to connect to the database:', err)
+})
 
 // Create the table communities instaniating a sequelize model
 const Communities = sequelize.define('communities',  {
@@ -36,11 +36,11 @@ const Communities = sequelize.define('communities',  {
   program: Sequelize.STRING,
   address: Sequelize.STRING,
   telephone: Sequelize.STRING
-});
+})
 
-//Sequelize creates table using sync - force option drops table if it exists
-Communities.sync({force: true})
+//Sequelize creates table using sync - if force option is true, sync drops table if it exists
+Communities.sync({force: false})
 .then((message) => console.log('SUCCESS: ', message))
-.catch((err) => console.log('ERROR', err))
+.catch((err) => console.log('ERROR: ', err))
 
-module.exports.Communities;
+module.exports.Communities = Communities
