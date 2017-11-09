@@ -21,7 +21,8 @@ export default class App extends React.Component {
   }
   
   // changes state of the searchVal
-  // NOTE: we need a special request for ALL since there will be No Filter
+  // NOTE: we need a special request for ALL since 
+  // there will be No Filter
   handleSearchInput(search) {
     // console.log(this.state.searchVal)
     this.setState({ searchVal: search }, function() {
