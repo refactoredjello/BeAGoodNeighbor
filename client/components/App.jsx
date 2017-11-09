@@ -7,6 +7,8 @@ import CommunityMap from './CommunityMap.jsx'
 import axios from 'axios'
 
 // main component with SearchBar and Results
+// hardcode center of map cuz it is very hard
+// to make a map with a moving center
 export default class App extends React.Component {
   constructor(props) {
     super(props);
@@ -20,20 +22,14 @@ export default class App extends React.Component {
     }
   }
   
-  // changes state of the searchVal
-  // NOTE: we need a special request for ALL since 
-  // there will be No Filter
+  // changes state of the searchVal to the borough selected from dropdown
   handleSearchInput(search) {
-    // console.log(this.state.searchVal)
     this.setState({ searchVal: search }, function() {
-      // change path to wherever data is
-      // console.log(this.state.searchVal)
+      // request data matching search value from DB
       axios.get(`/search?borough=${search}`) 
       .then((response) => {
-        // console.log(response.data)
+        // set response to results
         this.setState({ results: response.data}, function() {
-          // console.log(this.state.results)
-          // console.log(this.state.mapCenter)
         });
       })
     })

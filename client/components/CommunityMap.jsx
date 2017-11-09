@@ -7,13 +7,13 @@ import { withGoogleMap, GoogleMap, Marker } from 'react-google-maps'
 const CommunityMap = withGoogleMap(props => {
   
   // props.results is passed down from App.jsx
-  // '<CommunityMap results={this.state.results} />'
-  const markers = props.results || [];
-  // console.log(props.results)
-  // console.log(props.mapCenter)
+  const markers = props.results || []
   
   // the GoogleMap requires a zoom and a center
-  // create a marker element for each position (value in SearchResult)
+  // create a marker element for each position by mapping value in SearchResult
+  // map markers require an object with lat & lng - lat&lng are set with
+  // data from DB that requires a bunch of slicing to 
+  // convert from string to Number
   return (
     <div className="map">
 
@@ -33,22 +33,4 @@ const CommunityMap = withGoogleMap(props => {
   )
 })
 
-export default CommunityMap;
-
-// defaultCenter={{ lat: markers[0].the_geom.coordinates[0], 
-//           lng: markers[0].the_geom.coordinates[1] }}
-//           
-//           
-//           <GoogleMap
-      //   defaultZoom={12}
-      //   defaultCenter={{lat: 40.79796877343687,
-      //                 lng: -73.96923141968897}}
-      // >
-      //   {console.log(markers)}
-      //   {markers.length > 0 ?
-      //     markers.map((marker, idx) => (
-      //     <Marker position={{lat: marker.the_geom.coordinates[0], 
-      //       lng: marker.the_geom.coordinates[0]}} 
-      //     />
-      //   )) : null}
-      // </GoogleMap>
+export default CommunityMap
