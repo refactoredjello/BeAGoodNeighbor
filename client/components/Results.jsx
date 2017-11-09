@@ -1,5 +1,7 @@
 import React from 'react'
 import SearchResult from './SearchResult.jsx'
+import SavedResults from './SavedResults.jsx'
+
 
 // these are the search results that will appear below the searchbar
 // after a search has been made
@@ -45,6 +47,9 @@ export default class Results extends React.Component {
           <button >
           Save your results
           </button>
+          <div>
+            <SavedResults items={this.state.savedResults} />
+          </div>
           <div className="search-results">
             {this.props.results.length > 0 ?
               this.props.results.map((item, idx) => (
@@ -58,4 +63,4 @@ export default class Results extends React.Component {
       </div>
     )
   }
-} 
+}
