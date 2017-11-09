@@ -19,10 +19,10 @@ export default class Login extends React.Component {
     event.preventDefault()
     axios.post(`/user?username=${this.state.username}&password=${this.state.password}`)
     .then(function (response) {
-      console.log(response);
+      // console.log(response);
     })
     .catch(function (error) {
-      console.log(error);
+      // console.log(error);
     }) 
   }
   render() {
