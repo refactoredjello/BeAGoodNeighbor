@@ -21,15 +21,16 @@ export default class App extends React.Component {
   }
   
   // changes state of the searchVal
-  // NOTE: we need a special request for ALL since there will be No Filter
+  // NOTE: we need a special request for ALL since 
+  // there will be No Filter
   handleSearchInput(search) {
     // console.log(this.state.searchVal)
     this.setState({ searchVal: search }, function() {
       // change path to wherever data is
-      console.log(this.state.searchVal)
+      // console.log(this.state.searchVal)
       axios.get(`/search?borough=${search}`) 
       .then((response) => {
-        console.log(response.data)
+        // console.log(response.data)
         this.setState({ results: response.data}, function() {
           // console.log(this.state.results)
           // console.log(this.state.mapCenter)

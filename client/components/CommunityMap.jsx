@@ -11,14 +11,11 @@ const CommunityMap = withGoogleMap(props => {
   const markers = props.results || [];
   // console.log(props.results)
   // console.log(props.mapCenter)
-  // const mapCenter = {{ lat: markers[0].the_geom.coordinates[0], 
-  //         lng: markers[0].the_geom.coordinates[1] }} || props.mapCenter; 
-  
   
   // the GoogleMap requires a zoom and a center
   // create a marker element for each position (value in SearchResult)
   return (
-    <div className="map">{props.mapCenter.lat}
+    <div className="map">
 
       <GoogleMap
         defaultZoom={11}

@@ -5,7 +5,7 @@ export default class SearchBar extends React.Component {
 	constructor(props) {
     super(props);
     this.state = {
-      searchVal: ''
+      searchVal: 'Manhattan'
     }
   }
   
@@ -14,7 +14,7 @@ export default class SearchBar extends React.Component {
   handleNewInput(event) {
     event.preventDefault();
     this.props.handleSearch(this.state.searchVal);
-    console.log(this.state.searchVal)
+    // console.log(this.state.searchVal)
   }
   
   // this allows you the change the state upon typing
