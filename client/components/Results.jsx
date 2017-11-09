@@ -7,40 +7,52 @@ export default class Results extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      savedResults: [],
-      checked: false,
-      checkedBoxes: []
+      savedResults: []
     }
   }
 
-  handleInputChange(event) {
-    this.setState({
-      checked: !(this.state.checked)
+  // removes the checked item from the savedResults array if its in there
+  handleUncheckedItem(item) {
+    // prevState refers to the current state of savedResults
+    this.setState((prevState) => {
+      // save a copy of the prevState
+      var tempArr = prevState.savedResults.slice();
+      console.log(tempArr)
+      // if the item is in tempArr, splice it out
+      if (tempArr.indexOf(item) > -1) {
+        tempArr.splice(tempArr.indexOf(item), 1);
+        console.log(tempArr);
+      }
+      return { savedResults: tempArr }
     })
-    .then(() => if (this.state.checked === true) {
-      this.state.checkedBoxes.push(i)
-    }
-    )
   }
 
-  handleCheckedResults(event) {
-
+  // if the item is checked, push the item into the savedResults array
+  handleCheckedItem(item) {
+    this.setState((prevState) => {
+      // console.log(prevState)
+      var tempArr = prevState.savedResults.slice();
+      tempArr.push(item)
+      // console.log(tempArr)
+      return { savedResults: tempArr }
+    })
   }
 
   render() {
     return (
       <div className="returned-results">
         <h3> Your Volunteer Opportunities </h3>
-          <button>
+          <button >
           Save your results
           </button>
           <div className="search-results">
             {this.props.results.length > 0 ?
               this.props.results.map((item, idx) => (
-              // console.log(item);
+                // item.checked = false
                 <SearchResult item={item}
                               key={idx} 
-                              handleCheck={this.handleInputChange.bind(this)}/>
+                              handleCheckedItem={this.handleCheckedItem.bind(this)}
+                              handleUncheckedItem={this.handleUncheckedItem.bind(this)} />
               )) : null }
           </div>
       </div>
