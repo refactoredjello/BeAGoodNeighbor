@@ -1,8 +1,9 @@
 body {
 	margin: 0;
 	padding: 0;
-	background: linear-gradient(#FFFFFF, #d3e4ff);
+	background-color: #FFFFFF;
 	color: #003a99;
+	font-family: "Cabin", sans-serif;
 }
 
 
@@ -19,16 +20,25 @@ body {
 	border: 2px solid #003a99;
 }
 
-.five {
+.logoText {
 	margin-top: 80px;
 	font-size: 85px;
 	animation: vanishIn 4s;
 }
 
+.introText {
+	width: 40%;
+	font-size: 20px;
+	text-align: center;
+	margin-left: auto;
+	margin-right: auto;
+	margin-top: 6%;
+}
+
 .mainBox {
 	width: 100%;
 	height: 400px;
-	margin-top: 7%;
+	margin-top: 4%;
 	box-shadow: 2px 2px 7px #4a4f59;
 	border: 2px solid #003a99;
 	background-image: url("images/beAGoodNeighborBackground.png");
@@ -39,27 +49,21 @@ body {
 
 .startButton {
 	background-color: #003a99;
-	width: 19%;
 	height: 10%;
-	margin-left: auto;
-	margin-right: auto;
-	margin-top: 10%;
+	margin-left: 42%;
 	padding-top: 5px;
 	border-radius: 15px;
 	border: 2px solid #FFFFFF;
 	transition: .5s;
-}
-
-.startButtonText {
 	font-family: "Cabin", sans-serif;
 	font-size: 20px;
 	text-align: center;
 	color: #FFFFFF;
-	margin-top: 5px;
+	margin-top: 10%;
 }
 
-.button:hover {
-	background-color: #011028;
+.startButton:hover {
+	background-color: #61007f;
 }
 
 .signature {
@@ -113,15 +117,13 @@ body {
 	border-radius: 15px;
 	font-size: 20px;
 	font-family: "Cabin", sans-serif;
-	margin-left: auto;
-	margin-right: auto;
+	margin-left: 30%;
 	margin-bottom: 5%;
 	transition: .5s;
 }
 
 .saveResultsButton:hover {
 	background-color: #61007f;
-
 }
 
 .savedResultsTitle {
@@ -139,7 +141,15 @@ body {
 	margin-left: auto;
 }
 
+.result-component {
+	margin-left: 5%;
+	margin-top: 20px;
+}
 
+.saved-search-component {
+	margin-left: 5%;
+	margin-top: 20px;
+}
 
 @keyframes vanishIn {
   0% {
@@ -156,6 +166,7 @@ body {
     filter: blur(0px);
   }
 }
+
 
 
 

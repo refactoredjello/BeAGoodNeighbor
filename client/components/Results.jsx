@@ -66,8 +66,7 @@ export default class Results extends React.Component {
               <div className="saved-label">
               {this.state.isSavedShown === true ?
                 <label className="savedResultsTitle">
-                  Your Saved Results Here!
-                  ************************
+                  Your Saved Results!
                 </label> : null }
               </div> 
               {(this.state.savedResults.length > 0 && this.state.isSavedShown === true) ?

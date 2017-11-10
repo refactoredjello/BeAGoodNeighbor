@@ -41,12 +41,13 @@ export default class App extends React.Component {
     return (
       <div>
         <div className="logo">
-          <p className="five">Be A Good Neighbor</p>
+          <p className="logoText">Be A Good Neighbor</p>
+        </div>
+        <div className="introText">
+          <p>With this simple tool you can engage with the greatest city on earth, and the residents that make it that way. Find community centers and opportunities to volunteer in your neighborhood!</p>
         </div>
         <div className="mainBox">
-          <div className="startButton">
-            <p className="startButtonText">Get Started Now!</p>
-          </div>
+          
         </div>
         <div className="search-query">
           <SearchBar search={this.state.searchVal} 
