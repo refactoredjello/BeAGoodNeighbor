@@ -37,26 +37,24 @@ export default class SearchResult extends React.Component {
             Select this opportunity!
           </label>
         </div>
-        <div>
-        My state is {this.state.checked}
-        </div>
         <div className="facility-name">
-          {this.props.item.facility}
+          Facility: {this.props.item.facility}
         </div>
         <div className="borough">
-          {this.props.item.borough}
+          Borough: {this.props.item.borough}
         </div>
         <div className="program">
-          {this.props.item.program}
+          Program: {this.props.item.program}
         </div>
         <div className="sponsor">
-          {this.props.item.sponsor}
+          Sponsor: {this.props.item.sponsor}
         </div>
         <div className="address">
-          {this.props.item.address}
+          Address: {this.props.item.address}
         </div>
         <div className="telephone">
-          {this.props.item.telephone}
+          Telephone: {this.props.item.telephone.length <= 1 ? 
+          "No number provided" : this.props.item.telephone }
         </div>
       </div>
     )

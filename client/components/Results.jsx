@@ -9,7 +9,8 @@ export default class Results extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      savedResults: []
+      savedResults: [],
+      isSavedShown: false
     }
   }
 
@@ -40,20 +41,40 @@ export default class Results extends React.Component {
     })
   }
 
+  handleSave() {
+    this.setState({
+      isSavedShown: true
+    })
+  }
+
   render() {
     return (
       <div className="returned-results">
         <h3> Your Volunteer Opportunities </h3>
-          <button >
+          <button onClick={this.handleSave.bind(this)} >
           Save your results
           </button>
           <div>
-            <SavedResults items={this.state.savedResults} />
+            <div className="saved-results">
+              <div className="saved-label">
+              {this.state.isSavedShown === true ?
+                <label>
+                  Your Saved Results Here!
+                  ************************
+                </label> : null }
+              </div> 
+              {(this.state.savedResults.length > 0 && this.state.isSavedShown === true) ?
+                this.state.savedResults.map((item, idx) => (
+                // item.checked = false
+                  <SavedResults item={item}
+                                key={idx} 
+                  />
+                )) : null }
+            </div>
           </div>
           <div className="search-results">
             {this.props.results.length > 0 ?
               this.props.results.map((item, idx) => (
-                // item.checked = false
                 <SearchResult item={item}
                               key={idx} 
                               handleCheckedItem={this.handleCheckedItem.bind(this)}
