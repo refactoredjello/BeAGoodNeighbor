@@ -1,0 +1,173 @@
+body {
+	margin: 0;
+	padding: 0;
+	background-color: #FFFFFF;
+	color: #003a99;
+	font-family: "Cabin", sans-serif;
+}
+
+
+
+.logo {
+	font-family: "Fredericka The Great" , cursive;
+	text-align: center;
+	vertical-align: center;
+	background: linear-gradient(#FFFFFF, #d3e4ff);
+	height: 250px;
+	width: 100%;
+	padding: 0;
+	box-shadow: 2px 2px 7px #4a4f59;
+	border: 2px solid #003a99;
+}
+
+.logoText {
+	margin-top: 80px;
+	font-size: 85px;
+	animation: vanishIn 4s;
+}
+
+.introText {
+	width: 40%;
+	font-size: 20px;
+	text-align: center;
+	margin-left: auto;
+	margin-right: auto;
+	margin-top: 6%;
+}
+
+.mainBox {
+	width: 100%;
+	height: 400px;
+	margin-top: 4%;
+	box-shadow: 2px 2px 7px #4a4f59;
+	border: 2px solid #003a99;
+	background-image: url("images/beAGoodNeighborBackground.png");
+	background-size: stretch;
+	background-repeat: no-repeat;
+	background position: center;
+}
+
+.startButton {
+	background-color: #003a99;
+	height: 10%;
+	margin-left: 42%;
+	padding-top: 5px;
+	border-radius: 15px;
+	border: 2px solid #FFFFFF;
+	transition: .5s;
+	font-family: "Cabin", sans-serif;
+	font-size: 20px;
+	text-align: center;
+	color: #FFFFFF;
+	margin-top: 10%;
+}
+
+.startButton:hover {
+	background-color: #61007f;
+}
+
+.signature {
+	top: 94%;
+	text-align: center;
+	width: 100%;
+	font-size: 15px;
+	margin-left: auto;
+	margin-right: auto;
+	position: fixed;
+	color: #7c004d;
+}
+
+.search-query {
+	font-family: "Cabin", sans-serif;
+	text-align: center;
+	margin-right: 20px;
+	margin-bottom: 5%;
+}
+
+.pickBoroughText {
+	font-family: "Cabin", sans-serif;
+	font-size: 25px;
+}
+
+.boroughBox {
+	width: 180px;
+	height: 30px;
+	font-family: "Cabin", sans-serif;
+	font-size: 20px;
+}
+
+.submitButton {
+	background-color: #011028;
+	color: #d3e4ff;
+	margin-left: 5%;
+	height: 30px;
+	width: 100px;
+	border-radius: 15px;
+	font-size: 20px;
+	transition: .5s;
+}
+
+.submitButton:hover {
+	background-color: #61007f;
+}
+
+.saveResultsButton {
+	background-color: #011028;
+	color: #d3e4ff;
+	border-radius: 15px;
+	font-size: 20px;
+	font-family: "Cabin", sans-serif;
+	margin-left: 30%;
+	margin-bottom: 5%;
+	transition: .5s;
+}
+
+.saveResultsButton:hover {
+	background-color: #61007f;
+}
+
+.savedResultsTitle {
+	margin-left: auto;
+	margin-right: auto;
+	font-family: "Cabin", sans-serif;
+	font-size: 20px;
+}
+
+.volunteerOppsText {
+	text-align: center;
+	font-family: "Cabin", sans-serif;
+	font-size: 30px;
+	margin-right: auto;
+	margin-left: auto;
+}
+
+.result-component {
+	margin-left: 5%;
+	margin-top: 20px;
+}
+
+.saved-search-component {
+	margin-left: 5%;
+	margin-top: 20px;
+}
+
+@keyframes vanishIn {
+  0% {
+    opacity: 0;
+    transform-origin: 50% 50%;
+    transform: scale(2, 2);
+    filter: blur(90px);
+  }
+
+  100% {
+    opacity: 1;
+    transform-origin: 50% 50%;
+    transform: scale(1, 1);
+    filter: blur(0px);
+  }
+}
+
+
+
+
+
