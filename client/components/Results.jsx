@@ -41,12 +41,19 @@ export default class Results extends React.Component {
     })
   }
 
+  // when the save button is clicked, show the saved results
+  // by default, these results are hidden
   handleSave() {
     this.setState({
       isSavedShown: true
     })
   }
 
+  // className="saved-results": if savedResults has any items in it and isSavedShown 
+  // is true, render the saved results to the page
+  // className="search-results": maps over all values from the search and creates a 
+  // search result element for each returned item. Each item has it's own checkbox, which
+  // sets the state upon being clicked
   render() {
     return (
       <div className="returned-results">
@@ -65,7 +72,6 @@ export default class Results extends React.Component {
               </div> 
               {(this.state.savedResults.length > 0 && this.state.isSavedShown === true) ?
                 this.state.savedResults.map((item, idx) => (
-                // item.checked = false
                   <SavedResults item={item}
                                 key={idx} 
                   />
