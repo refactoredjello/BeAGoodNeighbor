@@ -41,9 +41,12 @@ export default class App extends React.Component {
     return (
       <div>
         <div className="logo">
-          <label>
-          BeAGoodNeighbor Today!
-          </label>
+          <p className="five">Be A Good Neighbor</p>
+        </div>
+        <div className="mainBox">
+          <div className="button">
+            <p className="buttonText">Get Started Now!</p>
+          </div>
         </div>
         <div className="search-query">
           <SearchBar search={this.state.searchVal} 
@@ -56,6 +59,9 @@ export default class App extends React.Component {
             mapElement={<div style={{ height: `100%`}}/>}
             />
           <Results results={this.state.results} />
+        </div>
+        <div className="signature">
+          <p>Coded and Designed By: Team Coruscant @ HRNYC11</p>
         </div>
       </div>
     )
