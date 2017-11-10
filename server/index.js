@@ -1,11 +1,17 @@
 var path = require('path')
 var express = require('express')
 var bodyParser = require('body-parser')
+var session = require('express-session')
 
 var searchDB = require('./searchDb.js')
 
 var app = express()
 
+app.use(session({
+  secret: 'team coruscant',
+  resave: false,
+  saveUninitialized: false
+}))
 app.use(bodyParser.json());
 app.use(express.static(path.resolve(__dirname, '../client')))
 
@@ -18,5 +24,10 @@ app.get('/search', (req, res) => {
   })
   .catch((err) => console.log('Error: ', err))
 })
+
+app.post('/saved', (req, res) => {
+  res.send(req.sessionID)
+})
+
 
 module.exports = app
