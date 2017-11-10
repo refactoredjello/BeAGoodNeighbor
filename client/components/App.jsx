@@ -41,9 +41,13 @@ export default class App extends React.Component {
     return (
       <div>
         <div className="logo">
-          <label>
-          BeAGoodNeighbor Today!
-          </label>
+          <p className="logoText">Be A Good Neighbor</p>
+        </div>
+        <div className="introText">
+          <p>With this simple tool you can engage with the greatest city on earth, and the residents that make it that way. Find community centers and opportunities to volunteer in your neighborhood!</p>
+        </div>
+        <div className="mainBox">
+          
         </div>
         <div className="search-query">
           <SearchBar search={this.state.searchVal} 
@@ -56,6 +60,9 @@ export default class App extends React.Component {
             mapElement={<div style={{ height: `100%`}}/>}
             />
           <Results results={this.state.results} />
+        </div>
+        <div className="signature">
+          <p>Coded and Designed By: Team Coruscant @ HRNYC11</p>
         </div>
       </div>
     )
