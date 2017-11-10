@@ -37,7 +37,7 @@ body {
 	background position: center;
 }
 
-.button {
+.startButton {
 	background-color: #003a99;
 	width: 19%;
 	height: 10%;
@@ -50,11 +50,12 @@ body {
 	transition: .5s;
 }
 
-.buttonText {
+.startButtonText {
 	font-family: "Cabin", sans-serif;
 	font-size: 20px;
 	text-align: center;
 	color: #FFFFFF;
+	margin-top: 5px;
 }
 
 .button:hover {
@@ -99,6 +100,43 @@ body {
 	width: 100px;
 	border-radius: 15px;
 	font-size: 20px;
+	transition: .5s;
+}
+
+.submitButton:hover {
+	background-color: #61007f;
+}
+
+.saveResultsButton {
+	background-color: #011028;
+	color: #d3e4ff;
+	border-radius: 15px;
+	font-size: 20px;
+	font-family: "Cabin", sans-serif;
+	margin-left: auto;
+	margin-right: auto;
+	margin-bottom: 5%;
+	transition: .5s;
+}
+
+.saveResultsButton:hover {
+	background-color: #61007f;
+
+}
+
+.savedResultsTitle {
+	margin-left: auto;
+	margin-right: auto;
+	font-family: "Cabin", sans-serif;
+	font-size: 20px;
+}
+
+.volunteerOppsText {
+	text-align: center;
+	font-family: "Cabin", sans-serif;
+	font-size: 30px;
+	margin-right: auto;
+	margin-left: auto;
 }
 
 

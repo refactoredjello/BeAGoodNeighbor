@@ -57,15 +57,15 @@ export default class Results extends React.Component {
   render() {
     return (
       <div className="returned-results">
-        <h3> Your Volunteer Opportunities </h3>
-          <button onClick={this.handleSave.bind(this)} >
+        <h3 className="volunteerOppsText"> Your Volunteer Opportunities </h3>
+          <button className="saveResultsButton" onClick={this.handleSave.bind(this)} >
           Save your results
           </button>
           <div>
             <div className="saved-results">
               <div className="saved-label">
               {this.state.isSavedShown === true ?
-                <label>
+                <label className="savedResultsTitle">
                   Your Saved Results Here!
                   ************************
                 </label> : null }

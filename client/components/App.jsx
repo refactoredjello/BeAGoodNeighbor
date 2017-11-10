@@ -44,8 +44,8 @@ export default class App extends React.Component {
           <p className="five">Be A Good Neighbor</p>
         </div>
         <div className="mainBox">
-          <div className="button">
-            <p className="buttonText">Get Started Now!</p>
+          <div className="startButton">
+            <p className="startButtonText">Get Started Now!</p>
           </div>
         </div>
         <div className="search-query">
