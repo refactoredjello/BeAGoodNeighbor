@@ -38,21 +38,38 @@ const Communities = sequelize.define('communities',  {
   telephone: Sequelize.STRING
 })
 
+// Create the table saved instaniating a sequelize model, same as communities
+const Saved = sequelize.define('saved',  {
+  sessionId: Sequelize.INTEGER,
+  itemId: Sequelize.INTEGER
+})
+
 //Create a users table
 const Users = sequelize.define('users',  {
   username: Sequelize.STRING,
-  password: Sequelize.STRING 
+  password: Sequelize.STRING
 })
 
-//Sequelize creates table using sync - if force option is true, sync drops table if it exists
-Users.sync({force: false})
-.then((message) => console.log('SUCCESS CREATING USER TABLE '))
-.catch((err) => console.log('ERROR: ', err))
+function syncDb() {
+  return Promise.all([
+    //Sequelize creates table using sync - if force option is true, sync drops table if it exists
+    Users.sync({force: false})
+    .then((message) => console.log('SUCCESS CREATING USER TABLE '))
+    .catch((err) => console.log('ERROR: ', err)),
 
-//Sequelize creates table using sync - if force option is true, sync drops table if it exists
-Communities.sync({force: false})
-.then((message) => console.log('SUCCESS CREATING COMMUNITIES TABLE '))
-.catch((err) => console.log('ERROR: ', err))
+    //Sequelize creates table using sync - if force option is true, sync drops table if it exists
+    Communities.sync({force: false})
+    .then((message) => console.log('SUCCESS CREATING COMMUNITIES TABLE '))
+    .catch((err) => console.log('ERROR: ', err)),
+
+    //Sequelize creates table using sync - if force option is true, sync drops table if it exists
+    Saved.sync({force: false})
+    .then((message) => console.log('SUCCESS CREATING SAVED TABLE '))
+    .catch((err) => console.log('ERROR: ', err))
+  ])
+}
 
 module.exports.Users = Users
 module.exports.Communities = Communities
+module.exports.Saved = Saved
+module.exports.syncDb = syncDb

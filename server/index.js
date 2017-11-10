@@ -4,6 +4,7 @@ var bodyParser = require('body-parser')
 var session = require('express-session')
 
 var searchDB = require('./searchDb.js')
+var savedDB = require('./savedDb.js')
 
 var app = express()
 
@@ -26,7 +27,13 @@ app.get('/search', (req, res) => {
 })
 
 app.post('/saved', (req, res) => {
-  res.send(req.sessionID)
+  console.log(req.body.saved)
+  savedDB(req.sessionId, req.body.saved)
+  .then(result => {
+    console.log(result);
+    res.send(result)
+  })
+  .catch((err) => console.log('Error: ', err))
 })
 
 
