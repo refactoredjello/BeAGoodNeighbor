@@ -1,6 +1,7 @@
 import React from 'react'
 import SearchResult from './SearchResult.jsx'
 import SavedResults from './SavedResults.jsx'
+import axios from 'axios'
 
 
 // these are the search results that will appear below the searchbar
@@ -10,6 +11,7 @@ export default class Results extends React.Component {
     super(props);
     this.state = {
       savedResults: [],
+      serverSaved: [],
       isSavedShown: false
     }
   }
@@ -30,22 +32,24 @@ export default class Results extends React.Component {
     })
   }
 
-  // if the item is checked, push the item into the savedResults array
+  // if the item is checked, push the item id into the savedResults array
   handleCheckedItem(item) {
     this.setState((prevState) => {
       // console.log(prevState)
       var tempArr = prevState.savedResults.slice();
-      tempArr.push(item)
+      tempArr.push(item.id)
       // console.log(tempArr)
       return { savedResults: tempArr }
     })
   }
 
-  // when the save button is clicked, show the saved results
-  // by default, these results are hidden
+  // when the save button is clicked, send a list of ids of the items to the server. 
+  // On response, set the state of the this equal to the response, which should be an an array of items. 
   handleSave() {
-    this.setState({
-      isSavedShown: true
+    axios.post('/saved', {saved: this.state.savedResults})
+    .then((response) => {
+      this.setState({serverSaved: response.data} )
+      this.setState({isSavedShown: true})
     })
   }
 
@@ -64,14 +68,11 @@ export default class Results extends React.Component {
           <div>
             <div className="saved-results">
               <div className="saved-label">
-              {this.state.isSavedShown === true ?
-                <label>
-                  Your Saved Results Here!
-                  ************************
-                </label> : null }
+              {this.state.serverSaved.length > 0 ?
+                <h3>Saved Results</h3> : null }
               </div> 
-              {(this.state.savedResults.length > 0 && this.state.isSavedShown === true) ?
-                this.state.savedResults.map((item, idx) => (
+              {(this.state.serverSaved.length > 0) ?
+                this.state.serverSaved.map((item, idx) => (
                   <SavedResults item={item}
                                 key={idx} 
                   />
