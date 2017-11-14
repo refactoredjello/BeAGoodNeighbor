@@ -1,6 +1,9 @@
 # BeAGoodNeighbor
 search your community for opportunities to give back
 
+Getting Started: The application requires a one time import of data from nyc open data api. To import the data into mysql first create the datbase in mysql shell: "CREATE DATABASE beAGoodNeighborDB;".
+Then run "node ./server/scripts/importData.js"
+
 Summary:
 BeAGoodNeighbor provides an interface that makes giving back to New York City easy. Find opportunities to volunteer or charitable events near your, or by zip code, neighborhood, field of interest, or group. Then, save your results and get involved!
 

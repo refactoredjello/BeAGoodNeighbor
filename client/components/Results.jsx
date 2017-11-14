@@ -1,7 +1,6 @@
 import React from 'react'
 import SearchResult from './SearchResult.jsx'
 import SavedResults from './SavedResults.jsx'
-import axios from 'axios'
 
 
 // these are the search results that will appear below the searchbar
@@ -12,7 +11,8 @@ export default class Results extends React.Component {
     this.state = {
       savedResults: [],
       serverSaved: [],
-      isSavedShown: false
+      isSavedShown: false,
+      isSavedPressed: false
     }
   }
 
@@ -35,7 +35,7 @@ export default class Results extends React.Component {
   // if the item is checked, push the item id into the savedResults array
   handleCheckedItem(item) {
     this.setState((prevState) => {
-      // console.log(prevState)
+      console.log(prevState)
       var tempArr = prevState.savedResults.slice();
       tempArr.push(item.id)
       // console.log(tempArr)
@@ -46,13 +46,16 @@ export default class Results extends React.Component {
   // when the save button is clicked, send a list of ids of the items to the server. 
   // On response, set the state of the this equal to the response, which should be an an array of items. 
   handleSave() {
-    axios.post('/saved', {saved: this.state.savedResults})
-    .then((response) => {
-      this.setState({serverSaved: response.data} )
-      this.setState({isSavedShown: true})
-    })
+    this.setState({isSavedPressed: true})
+    if (this.state.serverSaved.length > 0) {
+      axios.post('/saved', {saved: this.state.savedResults})
+      .then((response) => {
+        this.setState({serverSaved: response.data} )
+        // this.setState({isSavedShown: true})
+      })
+      .catch((err) => console.log(err))
+    } 
   }
-
   // className="saved-results": if savedResults has any items in it and isSavedShown 
   // is true, render the saved results to the page
   // className="search-results": maps over all values from the search and creates a 
@@ -61,8 +64,11 @@ export default class Results extends React.Component {
   render() {
     return (
       <div className="returned-results">
+
         <h3 className="volunteerOppsText"> Your Volunteer Opportunities </h3>
+          {this.state.isSavedPressed && !this.state.savedResults.length ? <span className="noneChecked">Please select a community</span> : null}
           <button className="saveResultsButton" onClick={this.handleSave.bind(this)} >
+
           Save your results
           </button>
           <div>
@@ -82,7 +88,7 @@ export default class Results extends React.Component {
             </div>
           </div>
           <div className="search-results">
-            {this.props.results.length > 0 ?
+            {this.props.results.length > 0 && !this.state.serverSaved.length ?
               this.props.results.map((item, idx) => (
                 <SearchResult item={item}
                               key={idx} 
