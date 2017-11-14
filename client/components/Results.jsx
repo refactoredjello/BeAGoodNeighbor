@@ -64,16 +64,20 @@ export default class Results extends React.Component {
   render() {
     return (
       <div className="returned-results">
-        <h3> Your Volunteer Opportunities </h3>
+
+        <h3 className="volunteerOppsText"> Your Volunteer Opportunities </h3>
           {this.state.isSavedPressed && !this.state.savedResults.length ? <span className="noneChecked">Please select a community</span> : null}
-          <button onClick={this.handleSave.bind(this)} >
+          <button className="saveResultsButton" onClick={this.handleSave.bind(this)} >
+
           Save your results
           </button>
           <div>
             <div className="saved-results">
               <div className="saved-label">
+
               {this.state.serverSaved.length > 0 ?
                 <h3>Saved Results</h3> : null }
+
               </div> 
               {(this.state.serverSaved.length > 0) ?
                 this.state.serverSaved.map((item, idx) => (

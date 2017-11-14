@@ -20,7 +20,7 @@ const CommunityMap = withGoogleMap(props => {
       <GoogleMap
         defaultZoom={11}
         defaultCenter={props.mapCenter}
-      >
+      className="gMap">
         {markers.length > 0 ?
           markers.map((marker, idx) => (
           <Marker position={{lat: Number(marker.the_geom.split(',')[2].split(']')[0]), 

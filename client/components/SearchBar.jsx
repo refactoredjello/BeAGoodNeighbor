@@ -29,8 +29,8 @@ export default class SearchBar extends React.Component {
       <div className="search-bar-input">
         <form onSubmit={this.handleNewInput.bind(this)}>
           <label>
-          Pick your borough:
-          <select value={this.state.searchVal} onChange={this.handleChange.bind(this)}>
+          <p className="pickBoroughText">Pick your borough:</p>
+          <select className="boroughBox" value={this.state.searchVal} onChange={this.handleChange.bind(this)}>
             <option value="Manhattan">Manhattan</option>
             <option value="Brooklyn">Brooklyn</option>
             <option value="Queens">Queens</option>
@@ -39,7 +39,7 @@ export default class SearchBar extends React.Component {
             <option value="All">All</option>
           </select>
           </label>
-          <input type="submit" value="Submit" />
+          <input type="submit" value="Submit" className="submitButton" />
         </form>
       </div>
     )
