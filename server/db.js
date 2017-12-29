@@ -1,5 +1,5 @@
 //Instanting the connection to the db and supplying sequalize instance
-const Sequelize = require('Sequelize')
+const Sequelize = require('sequelize')
 const sequelize = new Sequelize('beAGoodNeighborDB', 'root', '', {
   host: 'localhost',
   dialect: 'mysql',
