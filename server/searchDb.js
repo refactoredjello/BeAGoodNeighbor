@@ -4,7 +4,7 @@ const Communities = require('./db.js').Communities
 module.exports = (borough) => {
   let searchParam = { where: { borough: borough } };
   if (borough === 'All') searchParam = {};
-  return Communties.findAll(searchParam)
+  return Communities.findAll(searchParam)
 
 }
 
